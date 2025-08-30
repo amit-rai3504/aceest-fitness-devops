@@ -18,11 +18,15 @@ jobs:
           pwd
           ls -la
 
+      - name: Verify requirements.txt exists
+        run: |
+          test -f requirements.txt && echo "requirements.txt found" || (echo "requirements.txt NOT found"; exit 1)
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
-          cache-dependency-path: requirements.txt   
+          cache-dependency-path: "**/requirements.txt"
 
       - name: Install deps
         run: pip install -r requirements.txt
@@ -41,10 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
       - name: Build and test inside container
         run: |
           IMAGE=aceest-fitness:${{ github.sha }}
