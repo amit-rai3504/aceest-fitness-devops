@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/amit-rai3504/aceest-fitness-devops/actions/workflows/ci.yaml/badge.svg)
 
-A Flask API for **ACEest Fitness & Gym**.  
+A Flask API (with optional minimal HTML UI) for **ACEest Fitness & Gym**.  
 This project demonstrates core DevOps practices: version control, automated testing, containerization, and CI/CD with GitHub Actions.
 
 ---
@@ -10,16 +10,18 @@ This project demonstrates core DevOps practices: version control, automated test
 ## 📂 Project Structure
 ```
 aceest-fitness-devops/
-├── aceest_fitness/        # Flask app (workout API)
-│   └── __init__.py
-├── run.py                 # Entrypoint script
-├── tests/                 # Pytest unit tests
+├── aceest_fitness/            # Flask app (API + UI routes)
+│   ├── __init__.py
+│   └── templates/
+│       └── ui.html            # Minimal HTML GUI
+├── run.py                     # Entrypoint script
+├── tests/                     # Pytest unit tests
 │   └── test_app.py
-├── requirements.txt       # Python dependencies
-├── Dockerfile             # Containerization
+├── requirements.txt           # Python dependencies
+├── Dockerfile                 # Containerization
 ├── .dockerignore
 ├── .gitignore
-├── .github/workflows/ci.yml  # GitHub Actions workflow
+├── .github/workflows/ci.yml   # GitHub Actions workflow
 └── README.md
 ```
 
@@ -38,7 +40,8 @@ pip install -r requirements.txt
 ```bash
 python run.py
 ```
-Visit [http://localhost:8080/health](http://localhost:8080/health) → should return `ok`.
+- Health check → [http://localhost:8080/health](http://localhost:8080/health)  
+- Minimal UI → [http://localhost:8080/ui](http://localhost:8080/ui)  
 
 ---
 
@@ -52,6 +55,18 @@ Visit [http://localhost:8080/health](http://localhost:8080/health) → should re
   {"workout": "Pushups", "duration": 15}
   ```
 - `GET /workouts` → List all workouts
+
+---
+
+## 🖥️ Minimal GUI (Optional)
+
+Accessible at [http://localhost:8080/ui](http://localhost:8080/ui).  
+- Enter a workout name and duration in minutes.  
+- Click **Add Workout** to submit.  
+- Logged workouts are displayed in a table.  
+- Success or error messages appear above the form.  
+
+This GUI mirrors the functionality of the Tkinter version in a simple HTML page, built with Flask + Jinja2.
 
 ---
 
