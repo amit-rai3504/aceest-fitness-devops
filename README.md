@@ -1,6 +1,6 @@
 # ACEest Fitness & Gym — DevOps Assignment
 
-![CI](https://github.com/amit-rai3504/aceest-fitness-devops/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/amit-rai3504/aceest-fitness-devops/actions/workflows/ci.yaml/badge.svg)
 
 A Flask API for **ACEest Fitness & Gym**.  
 This project demonstrates core DevOps practices: version control, automated testing, containerization, and CI/CD with GitHub Actions.
